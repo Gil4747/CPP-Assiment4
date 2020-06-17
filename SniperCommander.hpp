@@ -1,13 +1,23 @@
 #include <string>
 #include <vector>
 #include <stdexcept>
-#include "Soldier.hpp"
-#include "Sniper.hpp"
+#include<limits.h>
 
 using std namespace;
-class SniperCommander: public Solider{
 
-SniperCommander(int PID):(Hp(120),Dp(100),cur_Hp(120),PlayerID(PID)){}
+class SniperCommander: public Soldier{
+
+public:
+
+SniperCommander(){}
+
+SniperCommander(int PID){
+     this->Hp=120;
+    this->Dp=100;
+    this->cur_Hp=120;
+    this->PlayerID=PID;
+}
+
 void specialAttack(std::vector<std::vector<Soldier*>> &Board, std::pair<int, int> location) override{
      int myID=Board[location.first][location.second].getPID();
      Sniper::specialAttack(Board, location);
@@ -15,7 +25,7 @@ void specialAttack(std::vector<std::vector<Soldier*>> &Board, std::pair<int, int
      for(;i<Board.size();i++){
           for(;j<Board[i].size();j++){
               if(Board[i][j].getPID()!=nullptr && Board[i][j].getPID()==myID){
-                  if((Sniper* x=dynamic_cast<Sniper*>(Board[i][j]))!=NULL){
+                  if(Sniper* x=dynamic_cast<Sniper*>(Board[i][j])){
                       pair<int,int> s;
                       s.first=i;
                       s.second=j;
@@ -25,4 +35,4 @@ void specialAttack(std::vector<std::vector<Soldier*>> &Board, std::pair<int, int
           }
      }
 }
-}
+};

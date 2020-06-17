@@ -1,13 +1,23 @@
 #include <string>
 #include <vector>
 #include <stdexcept>
-#include "Soldier.hpp"
 #include <iostream>
+#include<limits.h>
 
 using namespace std;
-class Paramedic: public Solider{
 
-Paramedic(int PID):(Hp(100),Dp(50),cur_Hp(100),PlayerID(PID)){}
+class Paramedic: public Soldier{
+
+public:
+
+Paramedic(){}
+
+Paramedic(int PID){
+     this->Hp=100;
+     this->cur_Hp=100;
+     this->PlayerID=PID;
+}
+
 void specialAttack(std::vector<std::vector<Soldier*>> &Board, std::pair<int, int> location) override{
      int myID=Board[location.first][location.second].getPID();
      int u=0,d=location.first,l=location.second,r=location.second;
@@ -28,4 +38,4 @@ void specialAttack(std::vector<std::vector<Soldier*>> &Board, std::pair<int, int
           }
      }
 }
-} 
+}; 

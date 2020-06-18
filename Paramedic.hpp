@@ -18,8 +18,9 @@ Paramedic(int PID){
      this->PlayerID=PID;
 }
 
+void specialAttack(std::vector<std::vector<Soldier*>> &Board, std::pair<int, int> location,int dummy) override{}
 void specialAttack(std::vector<std::vector<Soldier*>> &Board, std::pair<int, int> location) override{
-     int myID=Board[location.first][location.second].getPID();
+     int myID=Board[location.first][location.second]->getPID();
      int u=0,d=location.first,l=location.second,r=location.second;
      if(location.first>0)
      u=location.first-1;
@@ -30,10 +31,10 @@ void specialAttack(std::vector<std::vector<Soldier*>> &Board, std::pair<int, int
      if(location.second<Board.size())
      r=location.second+1;
 
-     for(i=u;i<=d+2;i++){
-          for(j=l;j<=r;j++){
-           if(Board[i][j].getPID()!=nullptr && Board[i][j].getPID()==myID){
-             Board[i][j].cur_Hp= Board[i][j].Hp; 
+     for(auto i=u;i<=d+2;i++){
+          for(auto j=l;j<=r;j++){
+           if(Board[i][j]!=nullptr && Board[i][j]->getPID()==myID){
+             Board[i][j]->cur_Hp= Board[i][j]->Hp; 
            }
           }
      }

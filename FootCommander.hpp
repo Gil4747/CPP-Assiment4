@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class FootCommander: public Soldier{
+class FootCommander: public FootSoldier{
 
 public:
 
@@ -21,7 +21,7 @@ FootCommander(int PID){
 
 void specialAttack(std::vector<std::vector<Soldier*>> &Board, std::pair<int, int> location) override{
      int myID=Board[location.first][location.second]->getPID();
-     Board[location.first][location.second]->specialAttack(Board,location);
+     FootSoldier::specialAttack(Board,location,2);
      int i=0,j=0;
      for(;i<Board.size();i++){
           for(;j<Board[i].size();j++){
@@ -30,7 +30,7 @@ void specialAttack(std::vector<std::vector<Soldier*>> &Board, std::pair<int, int
                       pair<int,int> s;
                       s.first=i;
                       s.second=j;
-                     Board[location.first][location.second]->specialAttack(Board,s);
+                     FootSoldier::specialAttack(Board,s);
                   }
               }
               

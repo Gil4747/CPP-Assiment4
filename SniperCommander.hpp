@@ -3,9 +3,9 @@
 #include <stdexcept>
 #include<limits.h>
 
-using std namespace;
+using namespace std;
 
-class SniperCommander: public Soldier{
+class SniperCommander: public Sniper{
 
 public:
 
@@ -19,12 +19,12 @@ SniperCommander(int PID){
 }
 
 void specialAttack(std::vector<std::vector<Soldier*>> &Board, std::pair<int, int> location) override{
-     int myID=Board[location.first][location.second].getPID();
-     Sniper::specialAttack(Board, location);
+     int myID=Board[location.first][location.second]->getPID();
+     Sniper::specialAttack(Board, location,2);
      int i=0,j=0;
      for(;i<Board.size();i++){
           for(;j<Board[i].size();j++){
-              if(Board[i][j].getPID()!=nullptr && Board[i][j].getPID()==myID){
+              if(Board[i][j]!=nullptr && Board[i][j]->getPID()==myID){
                   if(Sniper* x=dynamic_cast<Sniper*>(Board[i][j])){
                       pair<int,int> s;
                       s.first=i;

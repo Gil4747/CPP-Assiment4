@@ -14,7 +14,7 @@ Soldier* Board::operator[](std::pair<int,int> location) const{
     return this->board[location.first][location.second];
 }
 bool Board::isLocationEmpty(std::pair<int,int> source){
-     if(source.first<0 || source.first>this->board.size() || source.second<0 || source.second>this->board.front().size())
+     if(source.first<0 || source.first>this->board.size()-1 || source.second<0 || source.second>this->board.front().size()-1)
         return false;
        
      if(this->board[source.first][source.second]!=nullptr){
@@ -26,6 +26,7 @@ bool Board::isLocationEmpty(std::pair<int,int> source){
 }
 
 void Board::move(uint player_number, std::pair<int,int> source, MoveDIR direction){
+ 
 std::pair<int,int> target;
 target.first=source.first;
 target.second=source.second;
@@ -33,7 +34,7 @@ target.second=source.second;
 if(this->board[source.first][source.second]==nullptr || this->board[source.first][source.second]->getPID()!=player_number ||  board.empty()){
      throw std::invalid_argument("invalid move!");
 }
-  
+
 if(direction==MoveDIR::Up){
      target.first=source.first+1;
  }

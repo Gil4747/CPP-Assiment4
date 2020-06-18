@@ -40,152 +40,235 @@ TEST_CASE("Foot soldiers") {
 	board.deleteall();
 
 	
+  }
+	
+	
+TEST_CASE("SniperCommander") {
+
+	Board board(8, 8);
+
+	board[{0, 1}] = new FootSoldier(1);
+	board[{0, 3}] = new SniperCommander(1);
+	board[{0, 5}] = new FootSoldier(1);
+
+	board[{7, 1}] = new FootSoldier(2);
+	board[{7, 3}] = new FootCommander(2);
+	board[{7, 5}] = new FootSoldier(2);
+
+	CHECK_NOTHROW(board.move(1, { 0,1 }, Board::MoveDIR::Up));
+	CHECK_NOTHROW(board.move(2, { 7,1 }, Board::MoveDIR::Down));
+	CHECK_NOTHROW(board.move(1, { 0,3 }, Board::MoveDIR::Up));
+	
+	CHECK_NOTHROW(board.move(2, { 7,3 }, Board::MoveDIR::Left));
+	CHECK_NOTHROW(board.move(1, { 1,3 }, Board::MoveDIR::Left));
+	CHECK_NOTHROW(board.move(1, { 1,2 }, Board::MoveDIR::Up));
+	
+	CHECK_NOTHROW(board.move(1, { 2,2 }, Board::MoveDIR::Up));
+
+	CHECK(!board.has_soldiers(2));
+	board.deleteall();
+	
+	
 }
+
+TEST_CASE("Paramedic"){
+
+	Board board(8, 2);
+
+	board[{0, 0}] = new Sniper(1);
+	board[{6, 0}] = new SniperCommander(2);
+	board[{7, 1}] = new Paramedic(2);
 	
+	CHECK_NOTHROW(board.move(1, { 0,0 }, Board::MoveDIR::Up));
+	CHECK(board[{6, 0}]->cur_Hp==70);
+	CHECK_NOTHROW(board.move(1, { 1,0 }, Board::MoveDIR::Down));
+	CHECK(board[{7, 1}]->cur_Hp==50);
+	CHECK_NOTHROW(board.move(2, { 7,1 }, Board::MoveDIR::Down));
+	CHECK(board[{6, 0}]->cur_Hp==120);
+	CHECK(board[{6, 0}]->cur_Hp==120);
+
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+CHECK(board[{6, 0}]->cur_Hp==120);
+
+board.deleteall();
 	
-// TEST_CASE("SniperCommander") {
+}
 
-// 	Board board(8, 8);
+TEST_CASE("FootCommander") {
 
-// 	board[{0, 1}] = new FootSoldier(1);
-// 	board[{0, 3}] = new SniperCommander(1);
-// 	board[{0, 5}] = new FootSoldier(1);
+	Board board(8, 8);
+  
+	board[{0, 1}] = new FootSoldier(1);
+	CHECK(board.has_soldiers(1));
+	board[{0, 2}] = new FootSoldier(1);
+	CHECK(board.has_soldiers(1));
+	board[{0, 3}] = new FootSoldier(1);
+	CHECK(board.has_soldiers(1));
+	board[{0, 4}] = new FootSoldier(1);
+	CHECK(board.has_soldiers(1));
+	board[{0, 5}] = new FootSoldier(1);
+	CHECK(board.has_soldiers(1));
+	board[{0, 6}] = new FootSoldier(1);
+	CHECK(board.has_soldiers(1));
+	board[{0, 7}] = new FootSoldier(1);
+	CHECK(board.has_soldiers(1));
+	board[{0, 0}] = new FootSoldier(1);
+	CHECK(board.has_soldiers(1));
+	board[{1, 0}] = new FootSoldier(1);
+	CHECK(board.has_soldiers(1));
+	board[{1, 1}] = new FootCommander(1);
+	CHECK(board.has_soldiers(1));
+	CHECK(!board.has_soldiers(2));
+	board[{7, 1}] = new Paramedic(2);
+	CHECK(board.has_soldiers(2));
+	CHECK_NOTHROW(board.move(1, { 1,1 }, Board::MoveDIR::Up));
 
-// 	board[{7, 1}] = new FootSoldier(2);
-// 	board[{7, 3}] = new FootCommander(2);
-// 	board[{7, 5}] = new FootSoldier(2);
+	CHECK(!board.has_soldiers(2));
 
-// 	CHECK_NOTHROW(board.move(1, { 0,1 }, Board::MoveDIR::Up));
-// 	CHECK_NOTHROW(board.move(2, { 7,1 }, Board::MoveDIR::Down));
-// 	CHECK_NOTHROW(board.move(1, { 0,3 }, Board::MoveDIR::Up));
-// 	CHECK_NOTHROW(board.move(2, { 7,3 }, Board::MoveDIR::Left));
-// 	CHECK_NOTHROW(board.move(1, { 1,3 }, Board::MoveDIR::Left));
-// 	CHECK_NOTHROW(board.move(1, { 1,2 }, Board::MoveDIR::Up));
-// 	CHECK_NOTHROW(board.move(1, { 2,2 }, Board::MoveDIR::Up));
+	board.deleteall();
 
-// 	CHECK(!board.has_soldiers(2));
-// 	board.deleteall();
-	
-	
-// }
+}
+TEST_CASE("ParamedicCommander"){
 
-// TEST_CASE("Paramedic"){
+	Board board(8, 2);
 
-// 	Board board(8, 2);
-
-// 	board[{0, 0}] = new Sniper(1);
-// 	board[{6, 0}] = new SniperCommander(2);
-// 	board[{7, 1}] = new Paramedic(2);
-	
-// 	CHECK_NOTHROW(board.move(1, { 0,0 }, Board::MoveDIR::Up));
-// 	CHECK(board[{6, 0}]->Hp==70);
-// 	CHECK_NOTHROW(board.move(1, { 1,0 }, Board::MoveDIR::Down));
-// 	CHECK(board[{7, 1}]->Hp==50);
-// 	CHECK_NOTHROW(board.move(2, { 7,1 }, Board::MoveDIR::Down));
-// 	CHECK(board[{6, 0}]->Hp==120);
-
-// 	board.deleteall();
-	
-
-// }
-
-// TEST_CASE("FootCommander") {
-
-// 	Board board(8, 8);
-
-// 	board[{0, 1}] = new FootSoldier(1);
-// 	CHECK(board.has_soldiers(1));
-// 	board[{0, 2}] = new FootSoldier(1);
-// 	CHECK(board.has_soldiers(1));
-// 	board[{0, 3}] = new FootSoldier(1);
-// 	CHECK(board.has_soldiers(1));
-// 	board[{0, 4}] = new FootSoldier(1);
-// 	CHECK(board.has_soldiers(1));
-// 	board[{0, 5}] = new FootSoldier(1);
-// 	CHECK(board.has_soldiers(1));
-// 	board[{0, 6}] = new FootSoldier(1);
-// 	CHECK(board.has_soldiers(1));
-// 	board[{0, 7}] = new FootSoldier(1);
-// 	CHECK(board.has_soldiers(1));
-// 	board[{0, 0}] = new FootSoldier(1);
-// 	CHECK(board.has_soldiers(1));
-// 	board[{1, 0}] = new FootSoldier(1);
-// 	CHECK(board.has_soldiers(1));
-// 	board[{1, 1}] = new FootCommander(1);
-// 	CHECK(board.has_soldiers(1));
-// 	CHECK(!board.has_soldiers(2));
-// 	board[{7, 1}] = new Paramedic(2);
-// 	CHECK(board.has_soldiers(2));
-// 	CHECK_NOTHROW(board.move(1, { 1,1 }, Board::MoveDIR::Up));
-// 	CHECK(!board.has_soldiers(2));
-
-// 	board.deleteall();
-
-
-
-
-
-// }
-// TEST_CASE("ParamedicCommander"){
-
-// 	Board board(8, 2);
-
-// 	board[{0, 0}] = new Sniper(1);
-// 	board[{7, 0}] = new ParamedicCommander(2);
-// 	board[{7, 1}] = new Paramedic(2);
-	
-// 	CHECK_NOTHROW(board.move(1, { 0,0 }, Board::MoveDIR::Right));
-// 	CHECK_NOTHROW(board.move(2, { 7,0 }, Board::MoveDIR::Down));
-// 	CHECK_NOTHROW(board.move(1, { 0,1 }, Board::MoveDIR::Left));
-// 	CHECK_NOTHROW(board.move(2, { 6,0 }, Board::MoveDIR::Up));
-// 	CHECK(board[{7, 0}]->Hp==200);
-// 	CHECK(board[{7, 1}]->Hp==100);
-// 	CHECK(board[{0, 0}]->Hp==100);
-// 	board.deleteall();
-// }
-// TEST_CASE("Exepsion"){
+	board[{0, 0}] = new Sniper(1);
+	board[{7, 0}] = new ParamedicCommander(2);
+	board[{7, 1}] = new Paramedic(2);
+//	cout<<"a"<<endl;
+	CHECK_NOTHROW(board.move(1, { 0,0 }, Board::MoveDIR::Right));
+	CHECK_NOTHROW(board.move(2, { 7,0 }, Board::MoveDIR::Down));
+	CHECK_NOTHROW(board.move(1, { 0,1 }, Board::MoveDIR::Left));
+	CHECK_NOTHROW(board.move(2, { 6,0 }, Board::MoveDIR::Up));
+	CHECK(board[{7, 0}]->cur_Hp==200);
+	CHECK(board[{7, 1}]->cur_Hp==100);
+	CHECK(board[{0, 0}]->cur_Hp==100);
+		
+	board.deleteall();
+}
+TEST_CASE("Exepsion"){
 	
 
-// 	Board board(8, 8);
+	Board board(8, 8);
 
-// 	board[{0, 0}] = new Sniper(1);
-// 	board[{7, 0}] = new ParamedicCommander(2);
-// 	board[{7, 1}] = new Paramedic(2);
+	board[{0, 0}] = new Sniper(1);
+	board[{7, 0}] = new ParamedicCommander(2);
+	board[{7, 1}] = new Paramedic(2);
 	
 
-// 	CHECK_THROWS(board.move(2, { 5,5 }, Board::MoveDIR::Up));
-// 	CHECK_THROWS(board.move(1, { 6,5 }, Board::MoveDIR::Up));
-	
-// 	CHECK_THROWS(board.move(2, { 0,0 }, Board::MoveDIR::Up));
-// 	CHECK_THROWS(board.move(1, { 7,1 }, Board::MoveDIR::Down));
-	
-// 	CHECK_THROWS(board.move(1, { 7,0 }, Board::MoveDIR::Up));
+	CHECK_THROWS(board.move(2, { 5,5 }, Board::MoveDIR::Up));
+	CHECK_THROWS(board.move(1, { 6,5 }, Board::MoveDIR::Up));
+	CHECK_THROWS(board.move(2, { 0,0 }, Board::MoveDIR::Up));
+	CHECK_THROWS(board.move(1, { 7,1 }, Board::MoveDIR::Down));
+	CHECK_THROWS(board.move(1, { 7,0 }, Board::MoveDIR::Up));
+	CHECK_THROWS(board.move(1, { 0,0 }, Board::MoveDIR::Down));
+      
+	board.deleteall();
 
-// 	CHECK_THROWS(board.move(1, { 0,0 }, Board::MoveDIR::Down));
-// 	CHECK_THROWS(board.move(2, { 7,0 }, Board::MoveDIR::Up));
-// 	CHECK_THROWS(board.move(2, { 7,1 }, Board::MoveDIR::Up));
+}
+TEST_CASE("has soldier"){
 
+	Board board(8, 8);
 
+	board[{0, 0}] = new Sniper(1);
+	board[{7, 0}] = new ParamedicCommander(2);
+	board[{7, 1}] = new Paramedic(2);
 
-// 	board.deleteall();
+	CHECK(board.has_soldiers(1));
+	CHECK(board.has_soldiers(2));
 
-// }
-// TEST_CASE("has soldier"){
+	CHECK(board.has_soldiers(1));
+	CHECK(board.has_soldiers(2));
 
-// 	Board board(8, 8);
-
-// 	board[{0, 0}] = new Sniper(1);
-// 	board[{7, 0}] = new ParamedicCommander(2);
-// 	board[{7, 1}] = new Paramedic(2);
-
-// 	CHECK(board.has_soldiers(1));
-// 	CHECK(board.has_soldiers(2));
-
-// 	CHECK(board.has_soldiers(1));
-// 	CHECK(board.has_soldiers(2));
-
-// 	CHECK(board.has_soldiers(1));
-// 	CHECK(board.has_soldiers(2));
+	CHECK(board.has_soldiers(1));
+	CHECK(board.has_soldiers(2));
 	
 
-// }
+}

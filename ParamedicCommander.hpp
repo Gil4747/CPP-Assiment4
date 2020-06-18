@@ -12,23 +12,28 @@ public:
 ParamedicCommander(){}
 
 ParamedicCommander(int PID){
-      this->Hp=100;
+      this->Hp=200;
       this->cur_Hp=100;
       this->PlayerID=PID;
 }
 
 void specialAttack(std::vector<std::vector<Soldier*>> &Board, std::pair<int, int> location) override{
+
      int myID=Board[location.first][location.second]->getPID();
      Paramedic::specialAttack(Board,location);
-     int i=0,j=0;
-     for(;i<Board.size();i++){
-          for(;j<Board[i].size();j++){
+     for(auto i=0;i<Board.size();i++){
+          for(auto j=0;j<Board.front().size();j++){
+              if(i==location.first && j==location.second){
+                 j++;
+              }
               if(Board[i][j]!=nullptr && Board[i][j]->getPID()==myID){
                   if(Paramedic* x=dynamic_cast<Paramedic*>(Board[i][j])){
                       pair<int,int> s;
                       s.first=i;
                       s.second=j;
+                    //  cout<<i<<" "<<j<<endl;
                      Paramedic::specialAttack(Board,s);
+                    // cout<<i<<" "<<j<<endl;
                   }
               }
           }
